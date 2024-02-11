@@ -1,5 +1,6 @@
 const container = document.querySelector(".container");
 const buttons = document.querySelectorAll("button");
+const currentButton = null;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -13,9 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
             button.style.color = "white";
         });
     });
-
-    const containerHeight = container.offsetHeight;
-    const containerWidth = container.offsetWidth;
 
     // Create 16x16 grid of squares
     for (let i = 1; i < 256; i++) {
@@ -45,6 +43,18 @@ document.addEventListener("DOMContentLoaded", function () {
             square.style.borderColor = "transparent";
         })
     });
+    clear.addEventListener("click", () => {
+        squares.forEach(square => {
+            square.addEventListener("mouseenter", () => {
+                // Since prev button was selected, clear button onclick
+                // was continuing the same color after everything was cleared
+                // hence make everything white on clear.
+                square.style.backgroundColor = 'white';
+                square.style.borderColor = 'white';
+            });
+        });
+    })
+
 
     const eraser = document.querySelector(".eraser");
     eraser.addEventListener("click", () => {
@@ -57,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     const rainbowMode = document.querySelector(".rainbow-mode");
-    rainbowMode.addEventListener("mouseenter", () => {
+    rainbowMode.addEventListener("click", () => {
         squares.forEach(square => {
             square.addEventListener("mouseenter", () => {
                 // Generate random RGB values

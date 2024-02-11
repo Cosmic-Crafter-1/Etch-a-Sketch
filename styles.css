@@ -6,6 +6,12 @@ html {
 	background-color: rgb(248, 247, 188);
 }
 
+.heading {
+	font-size: 100px;
+	font-weight: 900;
+	margin-bottom: 5%;
+}
+
 .container-button-wrapper {
 	display: flex;
 	flex-direction: row-reverse;
